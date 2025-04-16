@@ -6,4 +6,6 @@ int main() {
     printf("Taille de 'unsigned char' : %zu octets\n", sizeof(unsigned char));
 
     printf("Taille de 'short' : %zu octets\n", sizeof(short));
+    printf("Taille de 'unsigned short' : %zu octets\n", sizeof(unsigned short));
+    printf("Taille de 'signed short' : %zu octets\n", sizeof(signed short));
 }
