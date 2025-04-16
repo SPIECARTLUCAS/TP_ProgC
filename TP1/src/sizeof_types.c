@@ -11,4 +11,5 @@ int main() {
 
     printf("Taille de 'int' : %zu octets\n", sizeof(int));
     printf("Taille de 'unsigned int' : %zu octets\n", sizeof(unsigned int));
+    printf("Taille de 'signed int' : %zu octets\n", sizeof(signed int));
 }
