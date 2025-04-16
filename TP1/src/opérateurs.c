@@ -26,10 +26,8 @@ int main() {
 
  
     bool est_egal = (a == b);
-    printf("a est égal à b : %y\n", est_egal);
+    printf("a est égal à b : %s\n", est_egal);
   
     bool est_superieur = (a > b);
-    printf("a est supérieur à b : %y\n", est_superieur);
-
-    return 0;
+    printf("a est supérieur à b : %s\n", est_superieur);
 }
