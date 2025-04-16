@@ -8,4 +8,8 @@ int main() {
     printf("Taille de 'short' : %zu octets\n", sizeof(short));
     printf("Taille de 'unsigned short' : %zu octets\n", sizeof(unsigned short));
     printf("Taille de 'signed short' : %zu octets\n", sizeof(signed short));
+
+    printf("Taille de 'signed int' %zu octecs"), sizeof(signed int));
+    printf("Taille de 'unsigned int' %zu octecs"), sizeof(unsigned int));
+    printf("Taille de 'int' : %zu octecs"), sizeof(int ));
 }
