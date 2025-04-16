@@ -3,9 +3,9 @@
 
 int main() {
     double rayon;
-
-    printf("Entrez la valeur du rayon du cercle : ");
     scanf("%lf", &rayon);
+    printf("Entrez la valeur du rayon du cercle : ");
+    
 
     double aire = M_PI * rayon * rayon;
 
