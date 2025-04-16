@@ -5,4 +5,5 @@ int main() {
     printf("Taille de 'signed char' : %zu octets\n", sizeof(signed char));
     printf("Taille de 'unsigned char' : %zu octets\n", sizeof(unsigned char));
 
+    printf("Taille de 'short' : %zu octets\n", sizeof(short));
 }
