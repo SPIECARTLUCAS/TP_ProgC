@@ -1,15 +1,18 @@
 #include <stdio.h>
 #include <math.h>
+
 int main() {
- double rayon;
+    double rayon;
 
-  printf("Entrez la valeur du rayon du cercle : ");
-  scanf("%lf", &rayon);
+    printf("Entrez la valeur du rayon du cercle : ");
+    scanf("%lf", &rayon);
 
-  double aire = M_PI * rayon * rayon;
-  
-  double perimetre = 2 * M_PI * rayon;
+    double aire = M_PI * rayon * rayon;
 
-  printf("L'aire du cercle est : ",aire);
-  printf("Le perimetre du cercle : ",perimetre);
+    double perimetre = 2 * M_PI * rayon;
+
+    printf("L'aire du cercle est : %lf\n", aire);
+    printf("Le périmètre du cercle est : %lf\n", perimetre);
+
+    return 0;
 }
