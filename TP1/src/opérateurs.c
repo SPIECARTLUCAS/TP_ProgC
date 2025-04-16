@@ -30,4 +30,6 @@ int main() {
   
     bool est_superieur = (a > b);
     printf("a est supérieur à b : %s\n", est_superieur);
+
+    return 0;
 }
