@@ -21,7 +21,7 @@ int main() {
     printf("a %% b = %d\n", modulo); 
 
     bool est_egal = (a == b);
-    printf("a est égal à b : %s\n", est_egal ? "vrai : "faux");
+    printf("a est égal à b : %s\n", est_egal ? "vrai" : "faux");
 
     bool est_superieur = (a > b);
     printf("a est supérieur à b : %s\n", est_superieur ? "vrai" : "faux");
