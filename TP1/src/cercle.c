@@ -14,5 +14,4 @@ int main() {
     printf("L'aire du cercle est : %lf\n", aire);
     printf("Le périmètre du cercle est : %lf\n", perimetre);
 
-    return 0;
 }
