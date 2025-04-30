@@ -16,7 +16,6 @@ void copierChaine(char *source, char *destination) {
         destination[i] = source[i];
         i++;
     }
-    destination[i] = '\0'; 
 }
 
 
@@ -32,7 +31,6 @@ void concatenerChaine(char *chaine1, char *chaine2, char *resultat) {
     while (chaine2[i] != '\0') {
         resultat[j++] = chaine2[i++];
     }
-
 }
 
 int main() {
