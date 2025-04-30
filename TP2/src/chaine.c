@@ -33,7 +33,6 @@ void concatenerChaine(char *chaine1, char *chaine2, char *resultat) {
         resultat[j++] = chaine2[i++];
     }
 
-    resultat[j] = '\0'; 
 }
 
 int main() {
