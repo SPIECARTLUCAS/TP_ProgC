@@ -47,20 +47,28 @@ int renvoie_message(int client_socket_fd, char *data)
  * @param data : Le message.
  * @return EXIT_SUCCESS en cas de succès, EXIT_FAILURE en cas d'erreur.
  */
-int recois_envoie_message(int client_socket_fd, char *data)
-{
-  printf("Message reçu: %s\n", data);
-  char code[10];
-  if (sscanf(data, "%9s:", code) == 1) // Assurez-vous que le format est correct
-  {
-    if (strcmp(code, "message:") == 0)
-    {
-      return renvoie_message(client_socket_fd, data);
-    }
-  }
+int recois_envoie_message(int client_socket_fd, char *data) {
+    printf("Message reçu: %s\n", data);
 
-  return (EXIT_SUCCESS);
+    char code[10];
+    if (sscanf(data, "%9s:", code) == 1) // Assurez-vous que le format est correct
+    {
+        if (strcmp(code, "message:") == 0)
+        {
+            // Demander à l'utilisateur de saisir un message
+            char user_message[1024];
+            printf("Votre réponse (max 1000 caractères): ");
+            fgets(user_message, sizeof(user_message), stdin);
+
+            // Envoyer le message saisi par l'utilisateur au client
+            send(client_socket_fd, user_message, strlen(user_message), 0);
+            return EXIT_SUCCESS;
+        }
+    }
+
+    return (EXIT_SUCCESS);
 }
+
 
 /**
  * Gestionnaire de signal pour Ctrl+C (SIGINT).
