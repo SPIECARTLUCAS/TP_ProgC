@@ -2,39 +2,56 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <arpa/inet.h>
+#include <netinet/in.h>
 
 #define PORT 12345
 
 int main() {
-    int sock = 0;
-    struct sockaddr_in serv_addr;
-    char message[1024];
+    int server_fd, new_socket;
+    struct sockaddr_in address;
+    int addrlen = sizeof(address);
+    char buffer[1024] = {0};
 
     // Créer le socket
-    sock = socket(AF_INET, SOCK_STREAM, 0);
-    if (sock < 0) {
-        perror("socket creation error");
-        return -1;
+    server_fd = socket(AF_INET, SOCK_STREAM, 0);
+    if (server_fd == 0) {
+        perror("socket failed");
+        exit(EXIT_FAILURE);
     }
 
-    // Configurer l'adresse du serveur
-    serv_addr.sin_family = AF_INET;
-    serv_addr.sin_port = htons(PORT);
-    inet_pton(AF_INET, "10.0.39.7", &serv_addr.sin_addr); // IP du serveur
+    // Configurer l'adresse
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = INADDR_ANY;
+    address.sin_port = htons(PORT);
 
-    // Connexion
-    if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
-        perror("Connexion échouée");
-        return -1;
+    // Lier le socket
+    if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
+        perror("bind failed");
+        exit(EXIT_FAILURE);
     }
 
-    printf("Connecté au serveur !\n");
+    // Écouter
+    if (listen(server_fd, 3) < 0) {
+        perror("listen");
+        exit(EXIT_FAILURE);
+    }
 
-    // Boucle d'envoi de messages
+    printf("Serveur en attente de connexion...\n");
+
+    // Accepter une connexion
+    new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen);
+    if (new_socket < 0) {
+        perror("accept");
+        exit(EXIT_FAILURE);
+    }
+
+    printf("Client connecté !\n");
+
+    // Lire les messages
     while (1) {
-        fgets(message, sizeof(message), stdin);
-        send(sock, message, strlen(message), 0);
+        memset(buffer, 0, sizeof(buffer));
+        read(new_socket, buffer, 1024);
+        printf("Reçu : %s\n", buffer);
     }
 
     return 0;
